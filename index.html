@@ -342,7 +342,25 @@ document.getElementById('nbShuffleBtn').addEventListener('click', () => {
   renderNotebook();
 });
 
-document.getElementById('nbCardContainer').addEventListener('click', () => {
+// ===== 手势滑动（笔记本）=====
+let nbTouchStartX = 0, nbTouchStartY = 0, nbTouchSwiped = false;
+document.getElementById('nbCardContainer').addEventListener('touchstart', (e) => {
+  nbTouchStartX = e.touches[0].clientX;
+  nbTouchStartY = e.touches[0].clientY;
+  nbTouchSwiped = false;
+}, { passive: true });
+document.getElementById('nbCardContainer').addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - nbTouchStartX;
+  const dy = e.changedTouches[0].clientY - nbTouchStartY;
+  if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy)) {
+    nbTouchSwiped = true;
+    if (dx < 0) { nbCurrent = (nbCurrent + 1) % nbOrder.length; }
+    else { nbCurrent = (nbCurrent - 1 + nbOrder.length) % nbOrder.length; }
+    renderNotebook();
+  }
+}, { passive: true });
+document.getElementById('nbCardContainer').addEventListener('click', (e) => {
+  if (nbTouchSwiped) { e.preventDefault(); e.stopPropagation(); return; }
   document.getElementById('nbCard').classList.toggle('flipped');
   const en = nbOrder[nbCurrent];
   const w = words.find(x => x.en === en);
@@ -390,7 +408,25 @@ function render() {
   updateStarBtn();
 }
 
-document.getElementById('cardContainer').addEventListener('click', () => {
+// ===== 手势滑动（主页面）=====
+let touchStartX = 0, touchStartY = 0, touchSwiped = false;
+document.getElementById('cardContainer').addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  touchSwiped = false;
+}, { passive: true });
+document.getElementById('cardContainer').addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy)) {
+    touchSwiped = true;
+    if (dx < 0) { current = (current + 1) % order.length; }
+    else { current = (current - 1 + order.length) % order.length; }
+    render();
+  }
+}, { passive: true });
+document.getElementById('cardContainer').addEventListener('click', (e) => {
+  if (touchSwiped) { e.preventDefault(); e.stopPropagation(); return; }
   card.classList.toggle('flipped');
   const w = words[order[current]];
   speak(w.en);
@@ -404,7 +440,6 @@ document.getElementById('nextBtn').addEventListener('click', () => {
   current = (current + 1) % order.length;
   render();
 });
-
 document.getElementById('shuffleBtn').addEventListener('click', () => {
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
