@@ -225,12 +225,17 @@
   <div class="tip">点卡片翻面并朗读 · ← → 切换</div>
 </div>
 
-<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase.js"></script>
 <script>
 // ===== Supabase 配置 =====
 const SUPABASE_URL = 'https://wusxvufaaxayjetqbdw.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_OCMfFMCo1eYZQN7f6ZS6Qg_HZJbkXET';
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let supabase = null;
+try {
+  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+} catch(e) {
+  alert('Supabase SDK 加载失败: ' + e.message);
+}
 
 // ===== 单词数据 =====
 const words = [
