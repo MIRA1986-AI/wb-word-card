@@ -227,7 +227,6 @@
 
 <script src="supabase.js"></script>
 <script>
-alert('JS开始运行');
 // ===== Supabase 配置 =====
 const SUPABASE_URL = 'https://wusxvufaaxayjetqbdw.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_OCMfFMCo1eYZQN7f6ZS6Qg_HZJbkXET';
@@ -309,9 +308,11 @@ document.getElementById('passwordInput').addEventListener('keydown', (e) => {
 document.getElementById('logoutBtn').addEventListener('click', doLogout);
 
 // 页面加载时检查是否已登录
-supabase.auth.getSession().then(({ data }) => {
-  if (data.session) showApp();
-});
+if (supabase) {
+  supabase.auth.getSession().then(({ data }) => {
+    if (data.session) showApp();
+  });
+}
 
 // ===== 发音 =====
 function speak(text) {
