@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>单词盒</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #fef6e4 0%, #f3d2c1 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+  }
+  .header {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 20px; color: #172c66; }
+  .progress { color: #172c66; font-size: 14px; font-weight: 600; }
+
+  .controls {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  button {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #172c66;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  button:hover { transform: translateY(-1px); }
+  button.secondary { background: #fff; color: #172c66; border: 2px solid #172c66; }
+  button.active { background: #f582ae; border-color: #f582ae; color: #fff; }
+
+  .card-container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    perspective: 1500px;
+    cursor: pointer;
+  }
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  .card.flipped { transform: rotateY(180deg); }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(23, 44, 102, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .face img { max-width: 88%; max-height: 78%; object-fit: contain; }
+  .back { transform: rotateY(180deg); }
+
+  .back .word {
+    font-size: 56px;
+    font-weight: 700;
+    color: #172c66;
+    letter-spacing: 1px;
+  }
+  .back .meaning {
+    font-size: 24px;
+    color: #f582ae;
+    margin-top: 14px;
+    font-weight: 500;
+  }
+
+  .front-word {
+    font-size: 60px;
+    font-weight: 700;
+    color: #172c66;
+  }
+  .front-hint {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  .nav {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .nav button { padding: 14px; font-size: 16px; }
+
+  .tip {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 单词盒</h1>
+  <div class="progress" id="progress">1 / 7</div>
+</div>
+
+<div class="controls">
+  <button id="reverseBtn" class="secondary">🔄 反向测试</button>
+  <button id="shuffleBtn" class="secondary">🔀 乱序重排</button>
+</div>
+
+<div class="card-container" id="cardContainer">
+  <div class="card" id="card">
+    <div class="face front" id="front"></div>
+    <div class="face back" id="back"></div>
+  </div>
+</div>
+
+<div class="nav">
+  <button id="prevBtn">← 上一张</button>
+  <button id="nextBtn">下一张 →</button>
+</div>
+
+<div class="tip">点卡片翻面并朗读 · ← → 切换 · 空格翻面</div>
+
+<script>
+// ========== 加卡片在这里 ==========
+// 复制一行，改成你的单词和图片文件名
+// 图片放到同一个文件夹里
+const words = [
+  { en: 'sun',    zh: '太阳', img: 'sun.png' },
+  { en: 'tree',   zh: '树',   img: 'tree.png' },
+  { en: 'river',  zh: '河流', img: 'river.png' },
+  { en: 'cat',    zh: '猫',   img: 'cat.png' },
+  { en: 'dog',    zh: '狗',   img: 'dog.png' },
+  { en: 'pig',    zh: '猪',   img: 'pig.png' },
+  { en: 'flower', zh: '花',   img: 'flower.png' },
+  // 新卡片加在这行下面，例如：
+  // { en: 'book', zh: '书', img: '书.png' },
+];
+
+let order = words.map((_, i) => i);
+let current = 0;
+let reversedMode = false;
+
+const card = document.getElementById('card');
+const front = document.getElementById('front');
+const back = document.getElementById('back');
+const progress = document.getElementById('progress');
+const reverseBtn = document.getElementById('reverseBtn');
+
+function speak(text) {
+  try {
+    // 用有道词典 TTS 接口，不依赖浏览器 speechSynthesis
+    const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+    const audio = new Audio(url);
+    audio.play().catch(function(e) {
+      console.error('audio play error:', e);
+    });
+  } catch (e) {
+    console.error('TTS error:', e);
+  }
+}
+
+function render() {
+  const w = words[order[current]];
+  card.classList.remove('flipped');
+  progress.textContent = (current + 1) + ' / ' + order.length;
+
+  if (reversedMode) {
+    // 反向模式：正面英文 → 背面图+中文
+    front.innerHTML =
+      '<div class="front-word">' + w.en + '</div>' +
+      '<div class="front-hint">点击看图和中文</div>';
+    back.innerHTML =
+      '<img src="' + w.img + '" alt="' + w.en + '">' +
+      '<div class="meaning" style="margin-top:14px;color:#f582ae;font-size:24px;font-weight:500">' + w.zh + '</div>';
+  } else {
+    // 正常模式：正面图+下方中文 → 背面只显示英文
+    front.innerHTML =
+      '<img src="' + w.img + '" alt="' + w.en + '">' +
+      '<div class="meaning" style="margin-top:14px;color:#f582ae;font-size:24px;font-weight:500">' + w.zh + '</div>';
+    back.innerHTML =
+      '<div class="word">' + w.en + '</div>';
+  }
+}
+
+document.getElementById('cardContainer').addEventListener('click', () => {
+  card.classList.toggle('flipped');
+  const w = words[order[current]];
+  speak(w.en);
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+  current = (current - 1 + order.length) % order.length;
+  render();
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  current = (current + 1) % order.length;
+  render();
+});
+
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  current = 0;
+  render();
+});
+
+reverseBtn.addEventListener('click', () => {
+  reversedMode = !reversedMode;
+  reverseBtn.classList.toggle('active', reversedMode);
+  render();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft')  document.getElementById('prevBtn').click();
+  else if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
+  else if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    document.getElementById('cardContainer').click();
+  }
+});
+
+render();
+</script>
+
+</body>
+</html>
