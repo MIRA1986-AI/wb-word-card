@@ -225,7 +225,7 @@
   <div class="tip">点卡片翻面并朗读 · ← → 切换</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // ===== Supabase 配置 =====
 const SUPABASE_URL = 'https://wusxvufaaxayjetqbdw.supabase.co';
@@ -290,7 +290,13 @@ async function doLogout() {
   document.getElementById('passwordInput').value = '';
 }
 
-document.getElementById('loginBtn').addEventListener('click', doLogin);
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  if (typeof supabase === 'undefined') {
+    alert('Supabase 加载失败，请刷新重试');
+    return;
+  }
+  await doLogin();
+});
 document.getElementById('passwordInput').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') doLogin();
 });
