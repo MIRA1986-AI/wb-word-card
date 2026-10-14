@@ -18,169 +18,80 @@
 
   /* ===== 密码锁 ===== */
   .lock-box {
-    width: 100%;
-    max-width: 360px;
-    background: #fff;
-    border-radius: 20px;
-    padding: 32px 24px;
-    box-shadow: 0 10px 30px rgba(23, 44, 102, 0.15);
-    margin-top: 80px;
+    width: 100%; max-width: 360px; background: #fff;
+    border-radius: 20px; padding: 32px 24px;
+    box-shadow: 0 10px 30px rgba(23, 44, 102, 0.15); margin-top: 80px;
   }
-  .lock-box h2 {
-    text-align: center;
-    color: #172c66;
-    margin-bottom: 8px;
-    font-size: 22px;
-  }
-  .lock-box p {
-    text-align: center;
-    color: #999;
-    font-size: 13px;
-    margin-bottom: 24px;
-  }
+  .lock-box h2 { text-align: center; color: #172c66; margin-bottom: 8px; font-size: 22px; }
+  .lock-box p { text-align: center; color: #999; font-size: 13px; margin-bottom: 24px; }
   .lock-box input {
-    width: 100%;
-    padding: 12px 14px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 16px;
-    margin-bottom: 12px;
-    outline: none;
+    width: 100%; padding: 12px 14px; border: 2px solid #e0e0e0; border-radius: 10px;
+    font-size: 16px; margin-bottom: 12px; outline: none;
   }
   .lock-box input:focus { border-color: #172c66; }
   .lock-box button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    background: #172c66;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+    width: 100%; padding: 13px; border: none; border-radius: 10px;
+    background: #172c66; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer;
   }
-  .lock-error {
-    color: #e74c3c;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 10px;
-    min-height: 18px;
-  }
+  .lock-error { color: #e74c3c; font-size: 13px; text-align: center; margin-top: 10px; min-height: 18px; }
 
   /* ===== 单词卡页面 ===== */
   .app { display: none; width: 100%; max-width: 440px; flex-direction: column; align-items: center; }
   .app.show { display: flex; }
 
-  .header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
+  .header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
   h1 { font-size: 20px; color: #172c66; }
   .progress { color: #172c66; font-size: 14px; font-weight: 600; }
-  .logout-btn {
-    background: none;
-    border: none;
-    color: #999;
-    font-size: 13px;
-    cursor: pointer;
-    text-decoration: underline;
-  }
+  .logout-btn { background: none; border: none; color: #999; font-size: 13px; cursor: pointer; text-decoration: underline; }
 
-  .controls {
-    width: 100%;
-    display: flex;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
+  .controls { width: 100%; display: flex; gap: 8px; margin-bottom: 18px; }
   button {
-    flex: 1;
-    padding: 10px 12px;
-    border: none;
-    border-radius: 10px;
-    background: #172c66;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.15s;
+    flex: 1; padding: 10px 12px; border: none; border-radius: 10px;
+    background: #172c66; color: #fff; font-size: 14px; cursor: pointer;
+    font-weight: 600; transition: all 0.15s;
   }
   button:hover { transform: translateY(-1px); }
   button.secondary { background: #fff; color: #172c66; border: 2px solid #172c66; }
   button.active { background: #f582ae; border-color: #f582ae; color: #fff; }
+  button.starred { background: #ffd93d; border-color: #ffd93d; color: #172c66; }
 
   .card-container {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 3 / 4;
-    perspective: 1500px;
-    cursor: pointer;
+    width: 100%; max-width: 400px; aspect-ratio: 3 / 4;
+    perspective: 1500px; cursor: pointer;
   }
   .card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 100%; height: 100%; position: relative;
+    transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
   }
   .card.flipped { transform: rotateY(180deg); }
-
   .face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(23, 44, 102, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(23, 44, 102, 0.15);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px;
   }
   .face img { max-width: 88%; max-height: 78%; object-fit: contain; }
   .back { transform: rotateY(180deg); }
+  .back .word { font-size: 56px; font-weight: 700; color: #172c66; letter-spacing: 1px; }
+  .back .meaning { font-size: 24px; color: #f582ae; margin-top: 14px; font-weight: 500; }
+  .front-word { font-size: 60px; font-weight: 700; color: #172c66; }
+  .front-hint { margin-top: 18px; font-size: 14px; color: #aaa; }
 
-  .back .word {
-    font-size: 56px;
-    font-weight: 700;
-    color: #172c66;
-    letter-spacing: 1px;
-  }
-  .back .meaning {
-    font-size: 24px;
-    color: #f582ae;
-    margin-top: 14px;
-    font-weight: 500;
-  }
+  .nav { width: 100%; display: flex; gap: 8px; margin-top: 20px; }
+  .nav button { padding: 14px; font-size: 15px; }
 
-  .front-word {
-    font-size: 60px;
-    font-weight: 700;
-    color: #172c66;
-  }
-  .front-hint {
-    margin-top: 18px;
-    font-size: 14px;
-    color: #aaa;
-  }
+  .tip { margin-top: 14px; font-size: 12px; color: #888; }
 
-  .nav {
-    width: 100%;
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
+  /* ===== 笔记本页面 ===== */
+  .notebook {
+    display: none; width: 100%; max-width: 440px; flex-direction: column; align-items: center;
   }
-  .nav button { padding: 14px; font-size: 16px; }
-
-  .tip {
-    margin-top: 14px;
-    font-size: 12px;
-    color: #888;
-  }
+  .notebook.show { display: flex; }
+  .nb-empty { text-align: center; color: #aaa; margin-top: 60px; font-size: 15px; }
+  .nb-nav { width: 100%; display: flex; gap: 8px; margin-top: 20px; }
+  .nb-nav button { padding: 14px; font-size: 15px; }
+  .nb-progress { color: #172c66; font-size: 14px; font-weight: 600; margin-top: 10px; }
+  .nb-top { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .nb-back { background: none; border: none; color: #172c66; font-size: 14px; cursor: pointer; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -205,8 +116,9 @@
   </div>
 
   <div class="controls">
-    <button id="reverseBtn" class="secondary">🔄 反向测试</button>
+    <button id="reverseBtn" class="secondary">🔄 正向测试</button>
     <button id="shuffleBtn" class="secondary">🔀 乱序重排</button>
+    <button id="notebookBtn" class="secondary">📓 笔记本</button>
   </div>
 
   <div class="card-container" id="cardContainer">
@@ -218,10 +130,39 @@
 
   <div class="nav">
     <button id="prevBtn">← 上一张</button>
+    <button id="starBtn" class="secondary">☆ 收藏</button>
     <button id="nextBtn">下一张 →</button>
   </div>
 
   <div class="tip">点卡片翻面并朗读 · ← → 切换</div>
+</div>
+
+<!-- 笔记本页面 -->
+<div class="notebook" id="notebook">
+  <div class="nb-top">
+    <h1>📓 笔记本</h1>
+    <div class="nb-progress" id="nbProgress"></div>
+  </div>
+
+  <div class="controls" style="margin-top:14px" id="nbControls">
+    <button id="nbReverseBtn" class="secondary">🔄 正向测试</button>
+    <button id="nbShuffleBtn" class="secondary">🔀 乱序重排</button>
+  </div>
+
+  <div id="nbEmpty" class="nb-empty">还没有收藏的单词<br>点卡片下方的 ☆ 收藏按钮加入</div>
+
+  <div class="card-container" id="nbCardContainer" style="display:none">
+    <div class="card" id="nbCard">
+      <div class="face front" id="nbFront"></div>
+      <div class="face back" id="nbBack"></div>
+    </div>
+  </div>
+
+  <div class="nb-nav" id="nbNav" style="display:none">
+    <button id="nbPrevBtn">← 上一张</button>
+    <button id="backBtn" class="secondary">返回</button>
+    <button id="nbNextBtn">下一张 →</button>
+  </div>
 </div>
 
 <script>
@@ -242,6 +183,7 @@ const words = [
 let order = words.map((_, i) => i);
 let current = 0;
 let reversedMode = false;
+let favorites = JSON.parse(localStorage.getItem('wordcard_favs') || '[]');
 
 const card = document.getElementById('card');
 const front = document.getElementById('front');
@@ -250,7 +192,9 @@ const progress = document.getElementById('progress');
 const reverseBtn = document.getElementById('reverseBtn');
 const lockBox = document.getElementById('lockBox');
 const app = document.getElementById('app');
-const lockError = document.getElementById('lockError');
+const notebook = document.getElementById('notebook');
+const notebookList = document.getElementById('notebookList');
+const starBtn = document.getElementById('starBtn');
 
 // ===== 密码锁逻辑 =====
 function unlock() {
@@ -261,29 +205,21 @@ function unlock() {
     app.classList.add('show');
     render();
   } else {
-    lockError.textContent = '密码错误';
+    document.getElementById('lockError').textContent = '密码错误';
   }
 }
 
 function lock() {
   localStorage.removeItem('wordcard_unlocked');
   app.classList.remove('show');
+  notebook.classList.remove('show');
   lockBox.style.display = 'block';
   document.getElementById('passwordInput').value = '';
 }
 
 document.getElementById('unlockBtn').addEventListener('click', unlock);
-document.getElementById('passwordInput').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') unlock();
-});
+document.getElementById('passwordInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
 document.getElementById('logoutBtn').addEventListener('click', lock);
-
-// 页面加载时检查是否已解锁
-if (localStorage.getItem('wordcard_unlocked') === '1') {
-  lockBox.style.display = 'none';
-  app.classList.add('show');
-  render();
-}
 
 // ===== 发音 =====
 function speak(text) {
@@ -293,6 +229,141 @@ function speak(text) {
     audio.play().catch(function(e) {});
   } catch (e) {}
 }
+
+// ===== 收藏 =====
+function saveFavs() { localStorage.setItem('wordcard_favs', JSON.stringify(favorites)); }
+function isFav(en) { return favorites.indexOf(en) !== -1; }
+
+function toggleStar() {
+  const w = words[order[current]];
+  if (isFav(w.en)) {
+    favorites = favorites.filter(x => x !== w.en);
+  } else {
+    favorites.push(w.en);
+  }
+  saveFavs();
+  updateStarBtn();
+}
+
+function updateStarBtn() {
+  const w = words[order[current]];
+  if (isFav(w.en)) {
+    starBtn.textContent = '★ 已收藏';
+    starBtn.classList.add('starred');
+  } else {
+    starBtn.textContent = '☆ 收藏';
+    starBtn.classList.remove('starred');
+  }
+}
+
+// ===== 笔记本 =====
+let nbCurrent = 0;
+let nbOrder = [];
+let nbReversed = false;
+
+function showNotebook() {
+  app.classList.remove('show');
+  notebook.classList.add('show');
+  nbOrder = favorites.slice();
+  nbCurrent = 0;
+  nbReversed = false;
+  updateNbReverseBtn();
+  renderNotebook();
+}
+
+function renderNotebook() {
+  const empty = document.getElementById('nbEmpty');
+  const cardC = document.getElementById('nbCardContainer');
+  const nav = document.getElementById('nbNav');
+  const prog = document.getElementById('nbProgress');
+  const controls = document.getElementById('nbControls');
+
+  if (favorites.length === 0) {
+    empty.style.display = 'block';
+    cardC.style.display = 'none';
+    nav.style.display = 'none';
+    controls.style.display = 'none';
+    prog.textContent = '';
+    return;
+  }
+  empty.style.display = 'none';
+  cardC.style.display = 'block';
+  nav.style.display = 'flex';
+  controls.style.display = 'flex';
+  prog.textContent = (nbCurrent + 1) + ' / ' + nbOrder.length;
+
+  const en = nbOrder[nbCurrent];
+  const w = words.find(x => x.en === en);
+  const card = document.getElementById('nbCard');
+  card.style.transition = 'none';
+  card.classList.remove('flipped');
+  card.offsetHeight;
+  card.style.transition = '';
+
+  if (nbReversed) {
+    document.getElementById('nbFront').innerHTML =
+      '<div class="front-word">' + w.en + '</div>' +
+      '<div class="front-hint">点击看图和中文</div>';
+    document.getElementById('nbBack').innerHTML =
+      '<img src="' + w.img + '" alt="' + w.en + '">' +
+      '<div class="meaning">' + w.zh + '</div>';
+  } else {
+    document.getElementById('nbFront').innerHTML =
+      '<img src="' + w.img + '" alt="' + w.en + '">' +
+      '<div class="meaning">' + w.zh + '</div>';
+    document.getElementById('nbBack').innerHTML =
+      '<div class="word">' + w.en + '</div>';
+  }
+}
+
+function updateNbReverseBtn() {
+  const btn = document.getElementById('nbReverseBtn');
+  if (nbReversed) {
+    btn.textContent = '🔄 反向测试';
+    btn.classList.add('active');
+  } else {
+    btn.textContent = '🔄 正向测试';
+    btn.classList.remove('active');
+  }
+}
+
+document.getElementById('nbReverseBtn').addEventListener('click', () => {
+  nbReversed = !nbReversed;
+  updateNbReverseBtn();
+  renderNotebook();
+});
+
+document.getElementById('nbShuffleBtn').addEventListener('click', () => {
+  for (let i = nbOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [nbOrder[i], nbOrder[j]] = [nbOrder[j], nbOrder[i]];
+  }
+  nbCurrent = 0;
+  renderNotebook();
+});
+
+document.getElementById('nbCardContainer').addEventListener('click', () => {
+  document.getElementById('nbCard').classList.toggle('flipped');
+  const en = nbOrder[nbCurrent];
+  const w = words.find(x => x.en === en);
+  speak(w.en);
+});
+
+document.getElementById('nbPrevBtn').addEventListener('click', () => {
+  nbCurrent = (nbCurrent - 1 + nbOrder.length) % nbOrder.length;
+  renderNotebook();
+});
+document.getElementById('nbNextBtn').addEventListener('click', () => {
+  nbCurrent = (nbCurrent + 1) % nbOrder.length;
+  renderNotebook();
+});
+
+document.getElementById('notebookBtn').addEventListener('click', showNotebook);
+document.getElementById('backBtn').addEventListener('click', () => {
+  notebook.classList.remove('show');
+  app.classList.add('show');
+});
+starBtn.addEventListener('click', toggleStar);
 
 // ===== 卡片渲染 =====
 function render() {
@@ -309,14 +380,14 @@ function render() {
       '<div class="front-hint">点击看图和中文</div>';
     back.innerHTML =
       '<img src="' + w.img + '" alt="' + w.en + '">' +
-      '<div class="meaning" style="margin-top:14px;color:#f582ae;font-size:24px;font-weight:500">' + w.zh + '</div>';
+      '<div class="meaning">' + w.zh + '</div>';
   } else {
     front.innerHTML =
       '<img src="' + w.img + '" alt="' + w.en + '">' +
-      '<div class="meaning" style="margin-top:14px;color:#f582ae;font-size:24px;font-weight:500">' + w.zh + '</div>';
-    back.innerHTML =
-      '<div class="word">' + w.en + '</div>';
+      '<div class="meaning">' + w.zh + '</div>';
+    back.innerHTML = '<div class="word">' + w.en + '</div>';
   }
+  updateStarBtn();
 }
 
 document.getElementById('cardContainer').addEventListener('click', () => {
@@ -329,7 +400,6 @@ document.getElementById('prevBtn').addEventListener('click', () => {
   current = (current - 1 + order.length) % order.length;
   render();
 });
-
 document.getElementById('nextBtn').addEventListener('click', () => {
   current = (current + 1) % order.length;
   render();
@@ -346,9 +416,27 @@ document.getElementById('shuffleBtn').addEventListener('click', () => {
 
 reverseBtn.addEventListener('click', () => {
   reversedMode = !reversedMode;
-  reverseBtn.classList.toggle('active', reversedMode);
+  updateReverseBtn();
   render();
 });
+
+function updateReverseBtn() {
+  if (reversedMode) {
+    reverseBtn.textContent = '🔄 反向测试';
+    reverseBtn.classList.add('active');
+  } else {
+    reverseBtn.textContent = '🔄 正向测试';
+    reverseBtn.classList.remove('active');
+  }
+}
+
+// 页面加载时检查是否已解锁
+updateReverseBtn();
+if (localStorage.getItem('wordcard_unlocked') === '1') {
+  lockBox.style.display = 'none';
+  app.classList.add('show');
+  render();
+}
 </script>
 
 </body>
