@@ -11,6 +11,89 @@
 <link rel="preload" as="image" href="dog.png">
 <link rel="preload" as="image" href="pig.png">
 <link rel="preload" as="image" href="flower.png">
+<link rel="preload" as="image" href="elephant.png">
+<link rel="preload" as="image" href="fox.png">
+<link rel="preload" as="image" href="tadpole.png">
+<link rel="preload" as="image" href="frog.png">
+<link rel="preload" as="image" href="giraffe.png">
+<link rel="preload" as="image" href="lion.png">
+<link rel="preload" as="image" href="leopard.png">
+<link rel="preload" as="image" href="penguin.png">
+<link rel="preload" as="image" href="butterfly.png">
+<link rel="preload" as="image" href="bee.png">
+<link rel="preload" as="image" href="dragonfly.png">
+<link rel="preload" as="image" href="ladybug.png">
+<link rel="preload" as="image" href="fly.png">
+<link rel="preload" as="image" href="mosquito.png">
+<link rel="preload" as="image" href="cockroach.png">
+<link rel="preload" as="image" href="gecko.png">
+<link rel="preload" as="image" href="squirrel.png">
+<link rel="preload" as="image" href="bat.png">
+<link rel="preload" as="image" href="snake.png">
+<link rel="preload" as="image" href="whale.png">
+<link rel="preload" as="image" href="shark.png">
+<link rel="preload" as="image" href="dolphin.png">
+<link rel="preload" as="image" href="crocodile.png">
+<link rel="preload" as="image" href="rooster.png">
+<link rel="preload" as="image" href="hen.png">
+<link rel="preload" as="image" href="fish.png">
+<link rel="preload" as="image" href="camel.png">
+<link rel="preload" as="image" href="horse.png">
+<link rel="preload" as="image" href="cow.png">
+<link rel="preload" as="image" href="duck.png">
+<link rel="preload" as="image" href="goose.png">
+<link rel="preload" as="image" href="rabbit.png">
+<link rel="preload" as="image" href="bear.png">
+<link rel="preload" as="image" href="panda.png">
+<link rel="preload" as="image" href="monkey.png">
+<link rel="preload" as="image" href="tiger.png">
+<link rel="preload" as="image" href="wolf.png">
+<link rel="preload" as="image" href="deer.png">
+<link rel="preload" as="image" href="zebra.png">
+<link rel="preload" as="image" href="kangaroo.png">
+<link rel="preload" as="image" href="hippo.png">
+<link rel="preload" as="image" href="rhino.png">
+<link rel="preload" as="image" href="koala.png">
+<link rel="preload" as="image" href="eagle.png">
+<link rel="preload" as="image" href="owl.png">
+<link rel="preload" as="image" href="parrot.png">
+<link rel="preload" as="image" href="ostrich.png">
+<link rel="preload" as="image" href="turkey.png">
+<link rel="preload" as="image" href="crab.png">
+<link rel="preload" as="image" href="shrimp.png">
+<link rel="preload" as="image" href="octopus.png">
+<link rel="preload" as="image" href="jellyfish.png">
+<link rel="preload" as="image" href="starfish.png">
+<link rel="preload" as="image" href="turtle.png">
+<link rel="preload" as="image" href="ant.png">
+<link rel="preload" as="image" href="spider.png">
+<link rel="preload" as="image" href="centipede.png">
+<link rel="preload" as="image" href="mouse.png">
+<link rel="preload" as="image" href="snail.png">
+<link rel="preload" as="image" href="earthworm.png">
+<link rel="preload" as="image" href="rose.png">
+<link rel="preload" as="image" href="sunflower.png">
+<link rel="preload" as="image" href="tulip.png">
+<link rel="preload" as="image" href="lily.png">
+<link rel="preload" as="image" href="carnation.png">
+<link rel="preload" as="image" href="cherry_blossom.png">
+<link rel="preload" as="image" href="lotus.png">
+<link rel="preload" as="image" href="peony.png">
+<link rel="preload" as="image" href="chrysanthemum.png">
+<link rel="preload" as="image" href="lavender.png">
+<link rel="preload" as="image" href="jasmine.png">
+<link rel="preload" as="image" href="gardenia.png">
+<link rel="preload" as="image" href="osmanthus.png">
+<link rel="preload" as="image" href="plum_blossom.png">
+<link rel="preload" as="image" href="peach_blossom.png">
+<link rel="preload" as="image" href="morning_glory.png">
+<link rel="preload" as="image" href="dandelion.png">
+<link rel="preload" as="image" href="daisy.png">
+<link rel="preload" as="image" href="orchid.png">
+<link rel="preload" as="image" href="hyacinth.png">
+<link rel="preload" as="image" href="daffodil.png">
+<link rel="preload" as="image" href="azalea.png">
+<link rel="preload" as="image" href="winter_jasmine.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -178,13 +261,96 @@ const PASSWORD = 'wb2026';
 
 // ===== 单词数据（加卡片在这里）=====
 const words = [
-  { en: 'sun',    zh: '太阳', img: 'sun.png' },
-  { en: 'tree',   zh: '树',   img: 'tree.png' },
-  { en: 'river',  zh: '河流', img: 'river.png' },
-  { en: 'cat',    zh: '猫',   img: 'cat.png' },
-  { en: 'dog',    zh: '狗',   img: 'dog.png' },
-  { en: 'pig',    zh: '猪',   img: 'pig.png' },
-  { en: 'flower', zh: '花',   img: 'flower.png' },
+  { en: 'sun', zh: '太阳', img: 'animals/sun.png' },
+  { en: 'tree', zh: '树', img: 'plants/tree.png' },
+  { en: 'river', zh: '河流', img: 'flowers/river.png' },
+  { en: 'cat', zh: '猫', img: 'animals/cat.png' },
+  { en: 'dog', zh: '狗', img: 'animals/dog.png' },
+  { en: 'pig', zh: '猪', img: 'animals/pig.png' },
+  { en: 'flower', zh: '花', img: 'plants/flower.png' },
+  { en: 'elephant', zh: '大象', img: 'animals/elephant.png' },
+  { en: 'fox', zh: '狐狸', img: 'animals/fox.png' },
+  { en: 'tadpole', zh: '蝌蚪', img: 'animals/tadpole.png' },
+  { en: 'frog', zh: '青蛙', img: 'animals/frog.png' },
+  { en: 'giraffe', zh: '长颈鹿', img: 'animals/giraffe.png' },
+  { en: 'lion', zh: '狮子', img: 'animals/lion.png' },
+  { en: 'leopard', zh: '豹', img: 'animals/leopard.png' },
+  { en: 'penguin', zh: '企鹅', img: 'animals/penguin.png' },
+  { en: 'butterfly', zh: '蝴蝶', img: 'animals/butterfly.png' },
+  { en: 'bee', zh: '蜜蜂', img: 'animals/bee.png' },
+  { en: 'dragonfly', zh: '蜻蜓', img: 'animals/dragonfly.png' },
+  { en: 'ladybug', zh: '瓢虫', img: 'animals/ladybug.png' },
+  { en: 'fly', zh: '苍蝇', img: 'animals/fly.png' },
+  { en: 'mosquito', zh: '蚊子', img: 'animals/mosquito.png' },
+  { en: 'cockroach', zh: '蟑螂', img: 'animals/cockroach.png' },
+  { en: 'gecko', zh: '壁虎', img: 'animals/gecko.png' },
+  { en: 'squirrel', zh: '松鼠', img: 'animals/squirrel.png' },
+  { en: 'bat', zh: '蝙蝠', img: 'animals/bat.png' },
+  { en: 'snake', zh: '蛇', img: 'animals/snake.png' },
+  { en: 'whale', zh: '鲸鱼', img: 'animals/whale.png' },
+  { en: 'shark', zh: '鲨鱼', img: 'animals/shark.png' },
+  { en: 'dolphin', zh: '海豚', img: 'animals/dolphin.png' },
+  { en: 'crocodile', zh: '鳄鱼', img: 'animals/crocodile.png' },
+  { en: 'rooster', zh: '公鸡', img: 'animals/rooster.png' },
+  { en: 'hen', zh: '母鸡', img: 'animals/hen.png' },
+  { en: 'fish', zh: '鱼', img: 'animals/fish.png' },
+  { en: 'camel', zh: '骆驼', img: 'animals/camel.png' },
+  { en: 'horse', zh: '马', img: 'animals/horse.png' },
+  { en: 'cow', zh: '牛', img: 'animals/cow.png' },
+  { en: 'duck', zh: '鸭', img: 'animals/duck.png' },
+  { en: 'goose', zh: '鹅', img: 'animals/goose.png' },
+  { en: 'rabbit', zh: '兔子', img: 'animals/rabbit.png' },
+  { en: 'bear', zh: '熊', img: 'animals/bear.png' },
+  { en: 'panda', zh: '熊猫', img: 'animals/panda.png' },
+  { en: 'monkey', zh: '猴子', img: 'animals/monkey.png' },
+  { en: 'tiger', zh: '老虎', img: 'animals/tiger.png' },
+  { en: 'wolf', zh: '狼', img: 'animals/wolf.png' },
+  { en: 'deer', zh: '鹿', img: 'animals/deer.png' },
+  { en: 'zebra', zh: '斑马', img: 'animals/zebra.png' },
+  { en: 'kangaroo', zh: '袋鼠', img: 'animals/kangaroo.png' },
+  { en: 'hippo', zh: '河马', img: 'animals/hippo.png' },
+  { en: 'rhino', zh: '犀牛', img: 'animals/rhino.png' },
+  { en: 'koala', zh: '考拉', img: 'animals/koala.png' },
+  { en: 'eagle', zh: '鹰', img: 'animals/eagle.png' },
+  { en: 'owl', zh: '猫头鹰', img: 'animals/owl.png' },
+  { en: 'parrot', zh: '鹦鹉', img: 'animals/parrot.png' },
+  { en: 'ostrich', zh: '鸵鸟', img: 'animals/ostrich.png' },
+  { en: 'turkey', zh: '火鸡', img: 'animals/turkey.png' },
+  { en: 'crab', zh: '螃蟹', img: 'animals/crab.png' },
+  { en: 'shrimp', zh: '虾', img: 'animals/shrimp.png' },
+  { en: 'octopus', zh: '章鱼', img: 'animals/octopus.png' },
+  { en: 'jellyfish', zh: '水母', img: 'animals/jellyfish.png' },
+  { en: 'starfish', zh: '海星', img: 'animals/starfish.png' },
+  { en: 'turtle', zh: '海龟', img: 'animals/turtle.png' },
+  { en: 'ant', zh: '蚂蚁', img: 'animals/ant.png' },
+  { en: 'spider', zh: '蜘蛛', img: 'animals/spider.png' },
+  { en: 'centipede', zh: '蜈蚣', img: 'animals/centipede.png' },
+  { en: 'mouse', zh: '老鼠', img: 'animals/mouse.png' },
+  { en: 'snail', zh: '蜗牛', img: 'animals/snail.png' },
+  { en: 'earthworm', zh: '蚯蚓', img: 'animals/earthworm.png' },
+  { en: 'rose', zh: '玫瑰', img: 'flowers/rose.png' },
+  { en: 'sunflower', zh: '向日葵', img: 'flowers/sunflower.png' },
+  { en: 'tulip', zh: '郁金香', img: 'flowers/tulip.png' },
+  { en: 'lily', zh: '百合', img: 'flowers/lily.png' },
+  { en: 'carnation', zh: '康乃馨', img: 'flowers/carnation.png' },
+  { en: 'cherry_blossom', zh: '樱花', img: 'flowers/cherry_blossom.png' },
+  { en: 'lotus', zh: '莲花', img: 'flowers/lotus.png' },
+  { en: 'peony', zh: '牡丹', img: 'flowers/peony.png' },
+  { en: 'chrysanthemum', zh: '菊花', img: 'flowers/chrysanthemum.png' },
+  { en: 'lavender', zh: '薰衣草', img: 'flowers/lavender.png' },
+  { en: 'jasmine', zh: '茉莉花', img: 'flowers/jasmine.png' },
+  { en: 'gardenia', zh: '栀子花', img: 'flowers/gardenia.png' },
+  { en: 'osmanthus', zh: '桂花', img: 'flowers/osmanthus.png' },
+  { en: 'plum_blossom', zh: '梅花', img: 'flowers/plum_blossom.png' },
+  { en: 'peach_blossom', zh: '桃花', img: 'flowers/peach_blossom.png' },
+  { en: 'morning_glory', zh: '牵牛花', img: 'flowers/morning_glory.png' },
+  { en: 'dandelion', zh: '蒲公英', img: 'flowers/dandelion.png' },
+  { en: 'daisy', zh: '雏菊', img: 'flowers/daisy.png' },
+  { en: 'orchid', zh: '兰花', img: 'flowers/orchid.png' },
+  { en: 'hyacinth', zh: '风信子', img: 'flowers/hyacinth.png' },
+  { en: 'daffodil', zh: '水仙花', img: 'flowers/daffodil.png' },
+  { en: 'azalea', zh: '杜鹃花', img: 'flowers/azalea.png' },
+  { en: 'winter_jasmine', zh: '迎春花', img: 'flowers/winter_jasmine.png' },
 ];
 
 let order = words.map((_, i) => i);
@@ -231,10 +397,24 @@ document.getElementById('logoutBtn').addEventListener('click', lock);
 // ===== 发音 =====
 function speak(text) {
   try {
-    const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+    const clean = text.replace(/_/g, ' ');
+    const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(clean) + '&type=2';
     const audio = new Audio(url);
     audio.play().catch(function(e) {});
   } catch (e) {}
+}
+
+// 显示用：下划线换成换行，超长单词自动缩小
+function displayName(en) {
+  if (en.indexOf('_') !== -1) {
+    return en.replace(/_/g, '<br>');
+  }
+  const len = en.length;
+  let size = 56;
+  if (len > 12) size = 28;
+  else if (len > 9) size = 36;
+  else if (len > 7) size = 44;
+  return '<div style="font-size:' + size + 'px">' + en + '</div>';
 }
 
 // ===== 收藏 =====
@@ -309,7 +489,7 @@ function renderNotebook() {
 
   if (nbReversed) {
     document.getElementById('nbFront').innerHTML =
-      '<div class="front-word">' + w.en + '</div>' +
+      '<div class="front-word">' + displayName(w.en) + '</div>' +
       '<div class="front-hint">点击看图和中文</div>';
     document.getElementById('nbBack').innerHTML =
       '<img src="' + w.img + '" alt="' + w.en + '">' +
@@ -319,7 +499,7 @@ function renderNotebook() {
       '<img src="' + w.img + '" alt="' + w.en + '">' +
       '<div class="meaning">' + w.zh + '</div>';
     document.getElementById('nbBack').innerHTML =
-      '<div class="word">' + w.en + '</div>';
+      '<div class="word">' + displayName(w.en) + '</div>';
   }
 }
 
@@ -384,7 +564,7 @@ function render() {
 
   if (reversedMode) {
     front.innerHTML =
-      '<div class="front-word">' + w.en + '</div>' +
+      '<div class="front-word">' + displayName(w.en) + '</div>' +
       '<div class="front-hint">点击看图和中文</div>';
     back.innerHTML =
       '<img src="' + w.img + '" alt="' + w.en + '">' +
@@ -393,7 +573,7 @@ function render() {
     front.innerHTML =
       '<img src="' + w.img + '" alt="' + w.en + '">' +
       '<div class="meaning">' + w.zh + '</div>';
-    back.innerHTML = '<div class="word">' + w.en + '</div>';
+    back.innerHTML = '<div class="word">' + displayName(w.en) + '</div>';
   }
   updateStarBtn();
 }
